@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+html {
+	scroll-behavior: smooth;
+}
+
+
+html, body {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	background: #f8fafc;
+	color: #000000;
+}
+
+button {
+	font-family: 'Space Mono', monospace;
+}
+
+* {
+	box-sizing: border-box;
+}

@@ -1,0 +1,7 @@
+# robots.txt for portfolio
+# Update the Sitemap line with your actual site URL if you have one.
+
+User-agent: *
+Disallow:
+
+# Sitemap: https://example.com/sitemap.xml

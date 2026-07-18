@@ -1,0 +1,490 @@
+/* ============================================================
+   Mongoose storefront styles.
+   Every rule is scoped under .mongoose so it never leaks into the
+   surrounding Tailwind-preflighted portfolio app.
+   Design tokens per the handoff README (denim × cream, double frame,
+   picnic-napkin wallpaper). No border-radius except perfect circles.
+   ============================================================ */
+
+.mongoose {
+  --mg-denim: #2c4a73;
+  --mg-ink: #22314a;
+  --mg-paper: #faf6ec;
+  --mg-wall: #f2ead9;
+  --mg-cream-dark: #ddd0b4;
+  --mg-taupe: #7a6c50;
+  --mg-body: #4a4434;
+  --mg-dotted: #b5a27c;
+  --mg-lite-denim: #cfd9e8;
+  --mg-lite-denim2: #a8b8cf;
+  --mg-error: #a33;
+
+  color: var(--mg-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.mongoose *,
+.mongoose *::before,
+.mongoose *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Wallpaper + frame shell ---------- */
+.mongoose .mg-wallpaper {
+  min-height: 100vh;
+  padding: 28px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  /* Picnic-check wallpaper (default) */
+  background:
+    repeating-linear-gradient(0deg, rgba(221, 208, 180, 0) 0, rgba(221, 208, 180, 0) 46px, rgba(203, 187, 152, 0.7) 46px, rgba(203, 187, 152, 0.7) 48px),
+    repeating-linear-gradient(90deg, #f2ead9 0, #f2ead9 46px, #ddd0b4 46px, #ddd0b4 48px);
+}
+.mongoose .mg-wallpaper.mg-wall-cream {
+  background: #f2ead9;
+}
+.mongoose .mg-wallpaper.mg-wall-dusk {
+  background:
+    repeating-linear-gradient(0deg, rgba(250, 246, 236, 0) 0, rgba(250, 246, 236, 0) 46px, rgba(250, 246, 236, 0.06) 46px, rgba(250, 246, 236, 0.06) 48px),
+    repeating-linear-gradient(90deg, #26405f 0, #26405f 46px, #213754 46px, #213754 48px);
+}
+
+.mongoose .mg-frame-outer {
+  width: 100%;
+  max-width: 1180px;
+  border: 3px solid var(--mg-denim);
+  padding: 5px;
+  background: rgba(250, 246, 236, 0.35);
+}
+.mongoose .mg-frame-inner {
+  border: 1px solid var(--mg-denim);
+  background: var(--mg-paper);
+}
+
+/* Frame variants (theming knob) */
+.mongoose .mg-frame-outer.mg-frame-hairline {
+  border: 1px solid var(--mg-denim);
+  padding: 0;
+}
+.mongoose .mg-frame-outer.mg-frame-hairline .mg-frame-inner {
+  border: none;
+}
+.mongoose .mg-frame-outer.mg-frame-open {
+  border: none;
+  padding: 0;
+}
+.mongoose .mg-frame-outer.mg-frame-open .mg-frame-inner {
+  border: 1px solid rgba(44, 74, 115, 0.35);
+}
+
+/* ---------- Section dividers ---------- */
+.mongoose .mg-divide-b {
+  border-bottom: 1px solid var(--mg-denim);
+}
+.mongoose .mg-divide-t {
+  border-top: 1px solid var(--mg-denim);
+}
+
+/* ---------- Typography helpers ---------- */
+.mongoose .mg-wordmark {
+  font-family: 'Young Serif', serif;
+  font-size: 46px;
+  letter-spacing: 0.02em;
+  color: var(--mg-denim);
+  line-height: 1;
+}
+.mongoose .mg-kicker {
+  font-family: 'Marcellus SC', serif;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  color: var(--mg-taupe);
+}
+.mongoose .mg-mono {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--mg-taupe);
+}
+.mongoose .mg-display {
+  font-family: Prata, serif;
+  font-weight: 400;
+  color: var(--mg-ink);
+  margin: 0;
+}
+.mongoose .mg-body {
+  font-family: Marcellus, serif;
+  line-height: 1.65;
+  color: var(--mg-body);
+}
+.mongoose .mg-italic {
+  font-family: Marcellus, serif;
+  font-style: italic;
+  color: var(--mg-taupe);
+}
+
+/* ---------- Header ---------- */
+.mongoose .mg-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 34px 40px 22px;
+  position: relative;
+}
+.mongoose .mg-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+.mongoose .mg-tagline {
+  font-family: 'Marcellus SC', serif;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  color: var(--mg-taupe);
+}
+.mongoose .mg-nav {
+  display: flex;
+  gap: 40px;
+  font-family: 'Marcellus SC', serif;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  margin-top: 8px;
+}
+.mongoose .mg-nav a,
+.mongoose .mg-nav .mg-navlink {
+  color: var(--mg-denim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+}
+.mongoose .mg-nav a:hover,
+.mongoose .mg-nav .mg-navlink:hover {
+  border-bottom: 1px solid var(--mg-denim);
+}
+.mongoose .mg-nav a.mg-active,
+.mongoose .mg-nav .mg-navlink.mg-active {
+  border-bottom: 1px solid var(--mg-denim);
+}
+
+/* ---------- Footer ---------- */
+.mongoose .mg-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 40px 34px;
+}
+.mongoose .mg-footer-links {
+  display: flex;
+  gap: 26px;
+  font-family: 'Marcellus SC', serif;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+}
+.mongoose .mg-footer-links a {
+  color: var(--mg-taupe);
+  text-decoration: none;
+  cursor: pointer;
+}
+.mongoose .mg-footer-links a:hover {
+  color: var(--mg-denim);
+}
+.mongoose .mg-footer-links span {
+  color: var(--mg-taupe);
+}
+
+/* ---------- Buttons ---------- */
+.mongoose .mg-btn {
+  display: inline-block;
+  background: var(--mg-denim);
+  color: var(--mg-wall);
+  font-family: 'Marcellus SC', serif;
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  padding: 16px 44px;
+  text-decoration: none;
+  border: 1px solid var(--mg-denim);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background 120ms ease,
+    color 120ms ease;
+}
+.mongoose .mg-btn:hover {
+  background: var(--mg-paper);
+  color: var(--mg-denim);
+}
+.mongoose .mg-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.mongoose .mg-btn:disabled:hover {
+  background: var(--mg-denim);
+  color: var(--mg-wall);
+}
+/* Compact button variant */
+.mongoose .mg-btn-sm {
+  padding: 12px 28px;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+}
+
+/* ---------- Text links ---------- */
+.mongoose .mg-link {
+  font-family: 'Marcellus SC', serif;
+  font-size: 13px;
+  letter-spacing: 0.26em;
+  color: var(--mg-denim);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mg-denim);
+  padding-bottom: 3px;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.mongoose .mg-link:hover {
+  color: var(--mg-ink);
+}
+
+/* ---------- Product / grid cells ---------- */
+.mongoose .mg-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.mongoose .mg-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 30px 38px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 120ms ease;
+  position: relative;
+}
+.mongoose .mg-cell:hover {
+  background: rgba(44, 74, 115, 0.05);
+}
+
+/* ---------- Product badges (top-left of a product section) ---------- */
+.mongoose .mg-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  font-family: 'Marcellus SC', serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  line-height: 1;
+  pointer-events: none;
+}
+/* "new" — quiet, upright cream chip with a denim outline */
+.mongoose .mg-badge-new {
+  color: var(--mg-denim);
+  background: var(--mg-wall);
+  border: 1px solid var(--mg-denim);
+}
+/* "original" — tilted like a little on-sale price tag */
+.mongoose .mg-badge-original {
+  color: var(--mg-wall);
+  background: var(--mg-denim);
+  border: 1px solid var(--mg-denim);
+  transform: rotate(-8deg);
+  box-shadow: 0 2px 5px rgba(34, 49, 74, 0.28);
+}
+.mongoose .mg-cell-name {
+  font-family: Prata, serif;
+  font-size: 20px;
+  color: var(--mg-ink);
+}
+.mongoose .mg-cell-price {
+  font-family: 'Marcellus SC', serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--mg-denim);
+}
+.mongoose .mg-cell-blurb {
+  font-family: Marcellus, serif;
+  font-size: 13px;
+  color: var(--mg-taupe);
+  font-style: italic;
+}
+
+/* ---------- Swatch / deckle frame ---------- */
+.mongoose .mg-swatch {
+  border: 1px solid var(--mg-denim);
+  padding: 7px;
+  box-sizing: border-box;
+  position: relative;
+}
+.mongoose .mg-swatch-inner {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px dashed rgba(44, 74, 115, 0.4);
+}
+.mongoose .mg-swatch-monogram {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  font-family: Prata, serif;
+  letter-spacing: 0.14em;
+  color: var(--mg-wall);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Quantity stepper ---------- */
+.mongoose .mg-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--mg-denim);
+}
+.mongoose .mg-stepper button {
+  width: 44px;
+  min-height: 44px;
+  background: none;
+  border: none;
+  border-right: 1px solid var(--mg-denim);
+  color: var(--mg-denim);
+  font-family: 'Marcellus SC', serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.mongoose .mg-stepper button:last-child {
+  border-right: none;
+  border-left: 1px solid var(--mg-denim);
+}
+.mongoose .mg-stepper button:hover {
+  background: rgba(44, 74, 115, 0.08);
+}
+.mongoose .mg-stepper button:disabled {
+  color: var(--mg-dotted);
+  cursor: default;
+  background: none;
+}
+.mongoose .mg-stepper .mg-stepper-val {
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Marcellus SC', serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--mg-ink);
+}
+/* Small stepper (cart) */
+.mongoose .mg-stepper-sm button {
+  width: 34px;
+  min-height: 34px;
+  font-size: 15px;
+}
+.mongoose .mg-stepper-sm .mg-stepper-val {
+  min-width: 34px;
+  font-size: 13px;
+}
+
+/* ---------- Monogram input ---------- */
+.mongoose .mg-monogram-input {
+  font-family: 'Marcellus SC', serif;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  outline: none;
+}
+/* On denim band */
+.mongoose .mg-monogram-input-denim {
+  background: rgba(250, 246, 236, 0.08);
+  border: 1px dashed var(--mg-lite-denim);
+  color: var(--mg-wall);
+  font-size: 18px;
+  padding: 12px 16px;
+  width: 130px;
+}
+
+/* ---------- Form fields (checkout) ---------- */
+.mongoose .mg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mongoose .mg-label {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--mg-taupe);
+  text-transform: uppercase;
+}
+.mongoose .mg-input {
+  background: #fff;
+  border: 1px solid var(--mg-denim);
+  color: var(--mg-ink);
+  font-family: Marcellus, serif;
+  font-size: 14px;
+  padding: 11px 13px;
+  outline: none;
+  width: 100%;
+}
+.mongoose .mg-input:focus {
+  border-color: var(--mg-ink);
+}
+.mongoose .mg-input-mono {
+  font-family: ui-monospace, Menlo, monospace;
+  letter-spacing: 0.12em;
+}
+
+/* Section heading with denim rule (checkout) */
+.mongoose .mg-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--mg-denim);
+  padding-bottom: 8px;
+  font-family: 'Marcellus SC', serif;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: var(--mg-denim);
+}
+
+/* Error box */
+.mongoose .mg-error-box {
+  border: 1px dashed var(--mg-error);
+  background: rgba(170, 51, 51, 0.05);
+  color: var(--mg-error);
+  font-family: Marcellus, serif;
+  font-style: italic;
+  font-size: 14px;
+  padding: 12px 16px;
+}
+
+/* Summary / receipt panel */
+.mongoose .mg-panel {
+  background: rgba(44, 74, 115, 0.04);
+}
+
+/* Dotted separator (cart line items) */
+.mongoose .mg-dotted-b {
+  border-bottom: 1px dotted var(--mg-dotted);
+}
+
+/* Utility text on denim */
+.mongoose .mg-on-denim {
+  color: var(--mg-wall);
+}
+.mongoose .mg-on-denim-muted {
+  color: var(--mg-lite-denim);
+}
