@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import speedyMemoryImage from './assets/speedymemory-logo.png'
 import mongooseImage from './assets/mongoose-logo.png'
-import design4Img from './assets/design4.png'
+import design4Img from './assets/nba-analytics.svg'
 import './App.css'
 
 const studyLinks = [
@@ -338,7 +338,7 @@ function App() {
               Work Experience
             </p>
             <p className="mt-4 text-base leading-7 text-slate-600">
-              I have no UI work experience yet, but I'm currently taking a UI design course (SEG 3125). We're learning about different design elements related to UI and UX. References:
+              I have no UI work experience yet, but I'm currently taking a UI design course (SEG 3125). We're learning about different design elements related to UI and UX. Please find the related case studies below. References:
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
               {studyLinks.map((link) => (
