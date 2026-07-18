@@ -11,6 +11,7 @@ import MongooseShop from './mongoose/Shop.jsx'
 import MongooseProduct from './mongoose/Product.jsx'
 import MongooseCart from './mongoose/Cart.jsx'
 import MongooseCheckout from './mongoose/Checkout.jsx'
+import NbaDashboard from './nba/NbaDashboard.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/clean-beaks" element={<CleanBeaks />} />
         <Route path="/speedy-memory" element={<SpeedyMemory />} />
+        <Route path="/nba-analytics" element={<NbaDashboard />} />
         <Route
           path="/mongoose/*"
           element={

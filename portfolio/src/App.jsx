@@ -43,10 +43,10 @@ const caseStudies = [
   },
   {
     title: 'Design 4',
-    name: 'Analytics site',
-    description: '...',
-    status: 'Coming soon',
-    href: '#design-4',
+    name: 'NBA Analytics',
+    description: 'A bilingual interactive dashboard of NBA player stats.',
+    status: 'Open',
+    href: '/nba-analytics',
     image: design4Img,
   },
 ]
